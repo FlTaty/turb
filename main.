@@ -23,13 +23,13 @@ plt.plot(iso_bar_0_s,iso_bar_0_h,color)
 
 
 st.write("Давление пара перед ступенью:")
-st.write("p_0 = 13.5e6")
+st.write("p_0 = 26e6")
 st.write("Температура пара перед ступенью:")
-st.write("T_0 = 552 + 273.15")
+st.write("T_0 = 560 + 273.15")
 st.write("Расход пара через ступень:")
-st.write("G_0 = 177.413")
+st.write("G_0 = 643.0819")
 st.write("Располагаемый теплоперепад:")
-st.write("H0= 90-110")
+st.write("H0= 105")
 st.write("Скорость пара на входе в сопловую решетку:")
 st.write("c0 = 0")
 st.write("Степень реактивности:")
@@ -46,14 +46,14 @@ st.write("delta = 0.003")
 st.write("Высота сопловых лопаток:")
 st.write("l_1 = 0.015")
 st.write("Угол выхода из сопловой решетки:")
-st.write("alpha_1e = 14")
+st.write("alpha_1e = 12")
 st.write("Коэффициент использования выходной скорости: ")
 st.write("kappa_vs=0")
 
-p_0 = 13.5
-T_0 = 552 + 273.15
-G_0 = 177.413
-H_0= 90
+p_0 = 26
+T_0 = 560 + 273.15
+G_0 = 643.0819
+H_0= 105
 c0 = 0
 rho=0.05
 n = 50 
@@ -62,7 +62,7 @@ d = 1.1
 b_2 = 0.03
 
 l_1 = 0.015
-alpha_1 = 14
+alpha_1 = 12
 Delta = 0.003 
 kappa_vs=0
 
@@ -123,6 +123,7 @@ d = [i * 1e-2 for i in list(range(90, 111, 1))]
 eta = []
 ucf = []
 al=[]
+fighs = plt.figure()
 for i in d:
     ucf_1 = M.pi * i * n / (2000 * H_0) ** 0.5
     ucf.append(ucf_1)
@@ -130,20 +131,26 @@ for i in d:
     eta.append(eta_ol)
     al.append(alpha)
 
-eta_=np.around(eta, decimals=3)
-ucf_=np.around(ucf, decimals=3)
-al_=np.around(al, decimals=2)
-
-ucf_eta = plt.figure()
-
 plt.plot(ucf, eta)
 plt.title("Зависимость ηo.л от u/cf")
 plt.xlabel("u/cf")
 plt.ylabel("ηo.л")
-plt.grid()
+plt.grid(True)
+st.pyplot(fighs)
+def frange(x, y, jump):
+     while x < y:
+         yield x
+         x += jump
 
-st.pyplot(ucf_eta)
 
+st.write("""# """)
+st.write("Табл. Зависимость ηол от U/cф ")
+df = pd.DataFrame({
+     "d, м": list(frange(0.9, 1.11, 0.01)),
+     "eta_ol": (eta),
+     "alpha": (alpha1),
+     "U_cf": (ucf)})  # Таблица
+df
 
 st.write(" ")
 d = 1.1
@@ -296,31 +303,6 @@ point_1w = WSP(h = point_1.h+w_1**2/2*1e-3, s = point_1.s)
 fig4 = plt.figure(figsize=(10, 10))
 psi = 0.91
 
-w_2 = psi*w_2t
-print(f'w_2 = {w_2:.2f} м/с')
-c_2 = (w_2**2+u**2-2*u*w_2*M.cos(M.radians(betta_2)))**0.5
-print(f'c_2 = {c_2:.2f} м/с')
-alpha_2 = M.degrees(M.atan(M.sin(M.radians(betta_2))/(M.cos(M.radians(betta_2))-u/w_2)))
-print(f'alpha_2 = {alpha_2:.2f}')
-Delta_Hr = w_2t**2/2*(1-psi**2)
-print(f'Delta_Hr = {Delta_Hr:.2f} Дж/кг')
-h_2 = h_2t+Delta_Hr*1e-3
-point_2 = WSP(P = point_2t.P, h = h_2)
-Delta_Hvs = c_2**2/2
-print(f'Delta_Hvs = {Delta_Hvs:.2f} Дж/кг')
-E_0 = H_0 - kappa_vs*Delta_Hvs
-etta_ol1 = (E_0*1e3 - Delta_Hs-Delta_Hr-(1-kappa_vs)*Delta_Hvs)/(E_0*1e3)
-print(f'1. etta_ol = {etta_ol1}')
-etta_ol2 = (u*(c_1*M.cos(M.radians(alpha_1))+c_2*M.cos(M.radians(alpha_2))))/(E_0*1e3)
-print(f'2. etta_ol = {etta_ol2}')
-
-
-h_3 = h_2 + Delta_Hvs * 1e-3
-point_3 = IAPWS97(P=point_2t.P, h=h_3)
-
-point_2_ = IAPWS97(P=point_2t.P, h=point_0.h-H_0)
-
-hsstage = plt.figure()
 
 def plot_hs_stage_t(x_lim,y_lim):
     plot_hs_nozzle_t(x_lim,y_lim)
@@ -331,11 +313,11 @@ def plot_hs_stage_t(x_lim,y_lim):
     plt.plot([point_2.s, point_3.s], [point_2.h, point_3.h], 'bo-')
     iso_bar(point_2t,-0.02,0.02,0.001,'y')
     iso_bar(point_1w,-0.005,0.005,0.001,'c')
-plot_hs_stage_t([6.55,6.65],[3300,3500])
+plot_hs_stage_t([6.17,6.22],[3200,3400])
 plt.title("h - s диаграмма")
 plt.xlabel("s, кДж/(кг*С)")
 plt.ylabel("h, кДж/кг")
-plt.grid()
+plt.grid(True)
 
 st.pyplot(hsstage)
 
@@ -405,6 +387,24 @@ Ksi_2 = Ksi_2_*k_21*k_22*k_23
 
 psi = M.sqrt(1-Ksi_2/100)
 print(f'psi = {psi:.2f}')
+psi = 0.93
+w_2 = psi*w_2t
+print(f'w_2 = {w_2:.2f} м/с')
+c_2 = (w_2**2+u**2-2*u*w_2*M.cos(M.radians(betta_2)))**0.5
+print(f'c_2 = {c_2:.2f} м/с')
+alpha_2 = M.degrees(M.atan(M.sin(M.radians(betta_2))/(M.cos(M.radians(betta_2))-u/w_2)))
+print(f'alpha_2 = {alpha_2:.2f}')
+Delta_Hr = w_2t**2/2*(1-psi**2)
+print(f'Delta_Hr = {Delta_Hr:.2f} Дж/кг')
+h_2 = h_2t+Delta_Hr*1e-3
+point_2 = WSP(P = point_2t.P, h = h_2)
+Delta_Hvs = c_2**2/2
+print(f'Delta_Hvs = {Delta_Hvs:.2f} Дж/кг')
+E_0 = H_0 - kappa_vs*Delta_Hvs
+etta_ol1 = (E_0*1e3 - Delta_Hs-Delta_Hr-(1-kappa_vs)*Delta_Hvs)/(E_0*1e3)
+print(f'1. etta_ol = {etta_ol1}')
+etta_ol2 = (u*(c_1*M.cos(M.radians(alpha_1))+c_2*M.cos(M.radians(alpha_2))))/(E_0*1e3)
+print(f'2. etta_ol = {etta_ol2}')
 
 
 
