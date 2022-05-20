@@ -30,9 +30,9 @@ if page == "Задание 1":
     tpv = st.number_input('Введите температуру Tпв, °C', value = 269)
     Tpv = tpv+273.15
 
-    age = st.slider('Укажите максимальную границу P0', min_value = 20.0, max_value = 26.0, step = 1.0)
+    age = st.slider('Укажите максимальную границу P0', min_value = 20.0, max_value = 26.0, step = 0.5)
     age = age + 0.01
-    P_0 = list(np.arange(20, age, 1))
+    P_0 = list(np.arange(20, age, 0.5))
     p0 = [p*1e6 for p in P_0]
     p_0_min = float(p0[0])
     p_0_max = float(p0[-1])
