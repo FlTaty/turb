@@ -86,6 +86,7 @@ if page == "Задание 1":
         T_1 = point_1.T
         v_1 = point_1.v
         p_1 = point_1.p
+        st.session_state.p_1=f"{p_:.2f}"
         p_pp_ = p_pp - 0.03*p_pp
         point_pp_ = IAPWS97(P=p_pp_*10**(-6),h = h_pp)
         s_pp_ = point_pp_.s
@@ -195,7 +196,9 @@ if page == "Задание 1":
 
     point_0 = IAPWS97(P=p_0_max*1e-6, T=T0)
     p_0_d = p_0_max - delta_p_0
+    st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
     point_0_d = IAPWS97(P=p_0_d*1e-6, h=point_0.h)
+    st.session_state.h_0_d=f"{point_0_d.h:.2f}"
     p_1t = ppp + delta_p_pp
     point_1t = IAPWS97(P=p_1t*10**(-6), s=point_0.s)
     H_01 = point_0.h - point_1t.h
@@ -227,9 +230,9 @@ if page == "Задание 1":
     h_pp_d = h_pp
 
     ############
-    st.session_state.h_0_d=f"{point_0_d.h:.2f}"
-    st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
-    st.session_state.p_1=f"{p_:.2f}"
+    #st.session_state.h_0_d=f"{point_0_d.h:.2f}"
+    #st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
+    #st.session_state.p_1=f"{p_:.2f}"
     ############
     plt.plot([point_0.s,point_0.s,point_0_d.s,point_1.s],[point_1t.h,point_0.h,point_0.h,point_1.h],'-or')
     plt.plot([point_pp.s,point_pp.s,point_pp_d.s,point_k.s],[point_kt.h,point_pp.h,point_pp.h,point_k.h],'-or')
