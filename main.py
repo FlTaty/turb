@@ -85,6 +85,7 @@ if page == "Задание 1":
         s_1 = point_1.s
         T_1 = point_1.T
         v_1 = point_1.v
+        p_1 = point_1.p
         p_pp_ = p_pp - 0.03*p_pp
         point_pp_ = IAPWS97(P=p_pp_*10**(-6),h = h_pp)
         s_pp_ = point_pp_.s
@@ -225,6 +226,11 @@ if page == "Задание 1":
     s_pp_d = [point_pp_d.s-0.05,point_pp_d.s,point_pp_d.s+0.05]
     h_pp_d = h_pp
 
+    ############
+    st.session_state.h_0_d=f"{point_0_d.h:.2f}"
+    st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
+    st.session_state.p_1=f"{p_:.2f}"
+    ############
     plt.plot([point_0.s,point_0.s,point_0_d.s,point_1.s],[point_1t.h,point_0.h,point_0.h,point_1.h],'-or')
     plt.plot([point_pp.s,point_pp.s,point_pp_d.s,point_k.s],[point_kt.h,point_pp.h,point_pp.h,point_k.h],'-or')
     plt.plot(s_0,h_0)
@@ -250,6 +256,9 @@ if page == "Задание 1":
 
 
     st.pyplot(fighs)
+    st.write("""P0_ """ 
+    st.write("""P0_ """
+    st.write("""P0_ """
     
 if page == "Задание 2":
 
