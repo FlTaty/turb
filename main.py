@@ -44,7 +44,7 @@ if page == "Задание 1":
     st.write(""" t0 = """ + str(t0) + """ C""")
     st.write(""" P0 = """ + str(p_0_min*10**(-6)) + " - " + str('{:.2}'.format(p_0_max*10**(-6))) + """ МПа""")
     st.write(""" tпп = """ + str(tpp) + """ C """)
-    st.write(""" Pпп = """ + str('{:.2}'.format(ppp*10**(-6)) + """ МПа""")
+    st.write(""" Pпп = """ + str(ppp*10**(-6)) + """ МПа""")
     st.write(""" Pк = """ + str(pk*10**(-3)) + """ кПа """)
     st.write(""" tпв = """ + str(tpv) + """ C """)
     st.write(""" Nэ = """ + str(Ne*10**(-6)) + """ МВт """)
