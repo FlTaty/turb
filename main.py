@@ -231,7 +231,7 @@ if page == "Задание 1":
 
     ############
     st.write("""p_0_d="""+str('{:.4}'.format(float(p_0_d))))
-    st.write("""h_0_d="""+str('{:.4}'.format(float(h_0_d))))
+    st.write("""h_0_d="""+str('{:.4}'.format(float(point_0_d.h))))
     st.write("""p_1="""+str('{:.4}'.format(float(p_1))))
     ############
     plt.plot([point_0.s,point_0.s,point_0_d.s,point_1.s],[point_1t.h,point_0.h,point_0.h,point_1.h],'-or')
