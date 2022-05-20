@@ -509,7 +509,7 @@ if page == "Задание 2":
     M_2t = w_2t/point_2t.w
     print(f'M_2t = {M_2t:.2f}')
     F_2 = G_0*point_2t.v/mu_2/w_2t
-        print(f'F_2 = {F_2:.2f}')
+    print(f'F_2 = {F_2:.2f}')
     betta_2 = M.degrees(M.asin(F_2/(e_opt*M.pi*d*l_2)))
     print(f'betta_2 = {betta_2:.2f}')
     point_1w = WSP(h = point_1.h+w_1**2/2*1e-3, s = point_1.s)
