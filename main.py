@@ -256,9 +256,7 @@ if page == "Задание 1":
 
 
     st.pyplot(fighs)
-    st.write("""P0_ """ 
-    st.write("""P0_ """
-    st.write("""P0_ """
+
     
 if page == "Задание 2":
 
