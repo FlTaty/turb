@@ -416,7 +416,7 @@ if page == "Задание 2":
         plt.ylim(y_lim)
 
 
-    plot_hs_nozzle_t([6.19, 6.2], [3300, 3600])
+    plot_hs_nozzle_t([6.1, 6.5], [3300, 3600])
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     # st.pyplot(fignozzle)
@@ -542,7 +542,7 @@ if page == "Задание 2":
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     plt.title("h - s диаграмма")
-    plot_hs_stage_t([6.155, 6.2], [3150, 3400])
+    plot_hs_stage_t([6.19, 6.2], [3200, 3400])
     plt.grid(True)
     st.pyplot(fig3)
 
