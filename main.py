@@ -229,11 +229,6 @@ if page == "Задание 1":
     s_pp_d = [point_pp_d.s-0.05,point_pp_d.s,point_pp_d.s+0.05]
     h_pp_d = h_pp
 
-    ############
-    st.write("""p_0_d="""+str('{:.4}'.format(float(p_0_d))))
-    st.write("""h_0_d="""+str('{:.6}'.format(float(point_0_d.h))))
-    st.write("""p_1="""+str('{:.2}'.format(float(point_1.P))))
-    ############
     plt.plot([point_0.s,point_0.s,point_0_d.s,point_1.s],[point_1t.h,point_0.h,point_0.h,point_1.h],'-or')
     plt.plot([point_pp.s,point_pp.s,point_pp_d.s,point_k.s],[point_kt.h,point_pp.h,point_pp.h,point_k.h],'-or')
     plt.plot(s_0,h_0)
@@ -365,13 +360,13 @@ if page == "Задание 2":
          while x < y:
              yield x
              x += jump
-
+          
     st.write("""# """)
     st.write("Табл. Зависимость ηол от U/cф ")
     df = pd.DataFrame({
          "d, м": list(frange(0.9, 1.11, 0.01)),
          "eta_ol": (eta),
-         "alpha": (alpha1),
+         "alpha": (al),
          "U_cf": (ucf)})  # Таблица
     df
 
@@ -427,7 +422,7 @@ if page == "Задание 2":
         f1_mod = 3.45
         W1_mod = 0.471
         alpha_inst1 = alpha_1-12.5*(t1_-0.75)+20.2
-    elif  10 < alpha_1 <= 13:
+    elif  10 < al <= 13:
         NozzleBlade = 'C-90-12A'
         t1_ = 0.78
         b1_mod = 5.25
@@ -719,4 +714,32 @@ if page == "Задание 3":
     st.write("""# """)
 
     st.write(" *Исходные данные:* ")    
-    
+    P0 = st.number_input('Введите давление полного торможения перед нерегулируемой ступенью P0_, МПа', value=19)
+    h0 = st.number_input('Введите энтальпия полного торможения перед первой нерегулируемой ступенью h0_, кДж/кг', value=3425.57)
+    Pz = st.number_input('Введите давление за ЦВД, МПа ', value=3.9)
+    G0 = st.number_input('Введите расход пара в первую нерегулируемую ступень G0, кг/с', value=645.6937)
+    drs = st.number_input('Введите диаметр регулирующей ступени, м', value=0.9)
+    etaoi = st.number_input('Введите внутренний КПД ЦВД ηол', value=0.753, max_value=1.000)
+
+
+
+
+    deltaD = 0.26 #m
+    n = 50  # Гц
+    rho_s = 0.05
+    alfa = 15  # град
+    fi = 0.96
+    mu1 = 0.97
+    delta = 0.003
+    tetta = 20
+    Z=7
+
+    st.write("""# """)
+    st.write(" *Дано:* ")
+    st.write(""" P0 = """ + str(P0) + """ МПа""")
+    st.write(""" h0 = """ + str(h0) + """ кДж/кг""")
+    st.write(""" Pz = """ + str(Pz) + """ МПа """)
+    st.write(""" G0 = """ + str(G0) + """ кг/с """)
+    st.write(""" dрс = """ + str(drs) + """ м """)
+    st.write(""" eta_oi = """ + str(etaoi) + """ """)
+    st.write(""" n = """ + str(n) + """ Гц """)
