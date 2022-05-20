@@ -381,6 +381,7 @@ if page == "Задание 2":
         alpha1.append(alpha)
         eta.append(eta_ol)
     plt.plot(ucf, eta)
+    plt.scatter(ucf, eta)
     plt.ylabel('ηол')
     plt.xlabel('U/cф')
     plt.title("Зависимость ηол от U/cф")
@@ -443,7 +444,6 @@ if page == "Задание 2":
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     #st.pyplot(fignozzle)
-
 
     #st.write(f'l_1 = {l_1:.4f} м')
 
@@ -518,7 +518,6 @@ if page == "Задание 2":
     c_1_tr = [0, 0, -c_1u, -c_1a]
     u_1_tr = [-w_1u, -c_1a, -u, 0]
 
-
     fig2 = plt.figure()
     ax = plt.axes()
     ax.arrow(*c_1_tr, head_width=5, length_includes_head=True, head_length=20, fc='r', ec='r')
@@ -527,7 +526,6 @@ if page == "Задание 2":
     plt.text(-2 * c_1u / 3, -3 * c_1a / 4, '$c_1$', fontsize=20)
     plt.text(-2 * w_1u / 3, -3 * c_1a / 4, '$w_1$', fontsize=20)
     #st.pyplot(fig2)
-
 
     betta_1 = M.degrees(M.atan(M.sin(M.radians(alpha_1)) / (M.cos(M.radians(alpha_1)) - u / c_1)))
     Delta_Hs = c_1t ** 2 / 2 * (1 - fi_1 ** 2)
@@ -646,7 +644,7 @@ if page == "Задание 2":
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     plt.title("h - s диаграмма")
-    plot_hs_stage_t([6.18, 6.22], [3250, 3360])
+    plot_hs_stage_t([6.18, 6.22], [3250, 3400])
     plt.grid(True)
     st.pyplot(fig3)
 
@@ -751,9 +749,6 @@ if page == "Задание 3":
     G0 = st.number_input('Введите расход пара в первую нерегулируемую ступень G0, кг/с', value=645.6937)
     drs = st.number_input('Введите диаметр регулирующей ступени, м', value=0.9)
     etaoi = st.number_input('Введите внутренний КПД ЦВД ηол', value=0.753, max_value=1.000)
-
-
-
 
     deltaD = 0.26 #m
     n = 50  # Гц
