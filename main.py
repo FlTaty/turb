@@ -273,8 +273,8 @@ if page == "Задание 2":
             plt.plot(iso_bar_0_s,iso_bar_0_h,color)
 
     p_0 = 26
-    T_0 = 560 + 273.15
-    
+    t_0= 560
+    T_0 = t_0 + 273.15    
     G_0 = 645.6937
     H_0= 105 # кДж/кг
     c0 = 0
@@ -646,17 +646,9 @@ if page == "Задание 2":
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     plt.title("h - s диаграмма")
-    plot_hs_stage_t([6.2, 6.23], [3240, 3360])
+    plot_hs_stage_t([6.18, 6.22], [3250, 3360])
     plt.grid(True)
     st.pyplot(fig3)
-
-
-
-
-
-
-
-
 
     c_1u = c_1 * M.cos(M.radians(alpha_1))
     c_1a = c_1 * M.sin(M.radians(alpha_1))
