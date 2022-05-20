@@ -231,8 +231,8 @@ if page == "Задание 1":
 
     ############
     st.write("""p_0_d="""+str('{:.4}'.format(float(p_0_d))))
-    #st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
-    #st.session_state.p_1=f"{p_:.2f}"
+    #st.write("""h_0_d="""+str('{:.4}'.format(float(h_0_d))))
+    #st.write("""p_1="""+str('{:.4}'.format(float(p_1))))
     ############
     plt.plot([point_0.s,point_0.s,point_0_d.s,point_1.s],[point_1t.h,point_0.h,point_0.h,point_1.h],'-or')
     plt.plot([point_pp.s,point_pp.s,point_pp_d.s,point_k.s],[point_kt.h,point_pp.h,point_pp.h,point_k.h],'-or')
