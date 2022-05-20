@@ -85,7 +85,7 @@ if page == "Задание 1":
         s_1 = point_1.s
         T_1 = point_1.T
         v_1 = point_1.v
-        p_1 = point_1.p
+        p_1 = point_1.P
         st.session_state.p_1=f"{p_:.2f}"
         p_pp_ = p_pp - 0.03*p_pp
         point_pp_ = IAPWS97(P=p_pp_*10**(-6),h = h_pp)
