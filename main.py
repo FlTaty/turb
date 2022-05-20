@@ -422,7 +422,7 @@ if page == "Задание 2":
         f1_mod = 3.45
         W1_mod = 0.471
         alpha_inst1 = alpha_1-12.5*(t1_-0.75)+20.2
-    elif  10 < al <= 13:
+    elif  10 < alpha_1 <= 13:
         NozzleBlade = 'C-90-12A'
         t1_ = 0.78
         b1_mod = 5.25
