@@ -353,9 +353,10 @@ if page == "Задание 2":
         alpha1.append(alpha)
         eta.append(eta_ol)
     plt.plot(ucf, eta)
-    plt.ylabel('eta')
-    plt.xlabel('U/cф')
-    plt.title("Зависимость ηол от U/cф")
+    plt.scatter(ucf, eta)
+    plt.ylabel('КПД')
+    plt.xlabel('Оптимальная скорость')
+    plt.title("Зависимость КПД от оптимальной скорости")
     plt.grid(True)
     st.pyplot(fighs)
 
@@ -367,7 +368,7 @@ if page == "Задание 2":
 
 
     st.write("""# """)
-    st.write("Табл. Зависимость ηол от U/cф ")
+    st.write("Табл. Зависимость КПД от оптимальной скорости ")
     df = pd.DataFrame({
         "d, м": list(frange(0.9, 1.11, 0.01)),
         "eta_ol": (eta),
@@ -392,7 +393,7 @@ if page == "Задание 2":
     e_opt = 6 * el_1 ** 0.5
     if e_opt > 0.85:
         e_opt = 0.85
-        l_1 = el_1 / e_opt
+    l_1 = el_1 / e_opt
 
     # st.write(f'u = {u:.2f} м/с')
     # st.write(f'h_0 = {point_0.h:.2f} кДж/кг')
@@ -415,7 +416,7 @@ if page == "Задание 2":
         plt.ylim(y_lim)
 
 
-    plot_hs_nozzle_t([6.1, 6.5], [3300, 3600])
+    plot_hs_nozzle_t([6.19, 6.2], [3300, 3600])
     plt.ylabel('h кДж/кг')
     plt.xlabel('s кДж/кг*К')
     # st.pyplot(fignozzle)
