@@ -145,7 +145,7 @@ if page == "Задание 1":
 
     eta, G0, Gk =[], [], []
     for p in p0:
-        eta_ = Calculate_eta_G0_Gk(N_e = Ne, p_0 = p, T_0 = T0, p_pp = ppp, T_pp = Tpp, p_k = pk, T_pv = Tpv)
+        eta_ = Calculate_eta_G0_Gk(N_e=Ne, p_0=p, T_0=T0, p_pp=ppp, T_pp=Tpp, p_k=pk, T_pv=Tpv)
         eta.append(eta_[0])
         G0.append(eta_[1])
         Gk.append(eta_[2])
@@ -196,7 +196,7 @@ if page == "Задание 1":
 
     point_0 = IAPWS97(P=p_0_max*1e-6, T=T0)
     p_0_d = p_0_max - delta_p_0
-    st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
+    st.session_state.p_0_d = f"{p_0_d/(10**6):.2f}"
     point_0_d = IAPWS97(P=p_0_d*1e-6, h=point_0.h)
     st.session_state.h_0_d=f"{point_0_d.h:.2f}"
     p_1t = ppp + delta_p_pp
