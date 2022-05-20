@@ -422,7 +422,7 @@ if page == "Задание 2":
         f1_mod = 3.45
         W1_mod = 0.471
         alpha_inst1 = alpha_1-12.5*(t1_-0.75)+20.2
-    elif  10 < alpha_1 <= 13:
+    elif 10 < alpha_1 <= 13:
         NozzleBlade = 'C-90-12A'
         t1_ = 0.78
         b1_mod = 5.25
@@ -530,7 +530,7 @@ if page == "Задание 2":
         plt.plot([point_2.s, point_3.s], [point_2.h, point_3.h], 'bo-')
         iso_bar(point_2t,-0.02,0.02,0.001,'y')
         iso_bar(point_1w,-0.005,0.005,0.001,'c')
-    plot_hs_stage_t([6.17,6.22],[3200,3400])
+    plot_hs_stage_t([6.0,6.5],[3000,3700])
     plt.title("h - s диаграмма")
     plt.xlabel("s, кДж/(кг*С)")
     plt.ylabel("h, кДж/кг")
