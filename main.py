@@ -230,7 +230,7 @@ if page == "Задание 1":
     h_pp_d = h_pp
 
     ############
-    st.write("p_0_d="+p_0_d)
+    st.write("""p_0_d="""+str('{:.4}'.format(float(p_0_d))))
     #st.session_state.p_0_d=f"{p_0_d/(10**6):.2f}"
     #st.session_state.p_1=f"{p_:.2f}"
     ############
